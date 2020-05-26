@@ -16,9 +16,8 @@ module.exports = function (app)
 
   app.delete("/api/notes/:id", (req, res) => 
   {
-
-    let noteId = req.params.id;
     let toRemove;
+    let noteId = req.params.id;
 
     for (let i = 0; i < noteDB.length; i++) 
     {
