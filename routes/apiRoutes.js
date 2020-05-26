@@ -28,7 +28,6 @@ module.exports = function (app)
     }
 
     noteDB.splice(toRemove, 1);
-
     res.json(noteDB);
   });
 };
