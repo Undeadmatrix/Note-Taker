@@ -1,34 +1,34 @@
-const noteData = require("../db/db.json");
+const noteDB = require("../db/db.json");
 
 module.exports = function (app) 
 {
-  
+
   app.get("/api/notes", (req, res) => 
   {
-    res.json(noteData);
+    res.json(noteDB);
   });
 
   app.post("/api/notes", (req, res) => 
   {
-    noteData.push(req.body);
-    res.json(noteData);
+    noteDB.push(req.body);
+    res.json(noteDB);
   });
 
   app.delete("/api/notes/:id", (req, res) => 
   {
 
     let noteId = req.params.id;
-    let removeIndex;
+    let toRemove;
 
-    for (let i = 0; i < noteData.length; i++) 
+    for (let i = 0; i < noteDB.length; i++) 
     {
-      if(noteData[i].id === noteId) {
-        removeIndex = i;
+      if(noteDB[i].id === noteId) {
+        toRemove = i;
       }
     }
 
-    noteData.splice(removeIndex, 1);
+    noteDB.splice(toRemove, 1);
 
-    res.json(noteData);
+    res.json(noteDB);
   });
 };
